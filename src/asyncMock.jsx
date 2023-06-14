@@ -4,7 +4,7 @@ const asyncMock = [
         name:'Torta Festiva',
         prince:'90000',
         category:'tortas',
-        img:'./img/tortas/torta-uno.jpg',
+        img:'./img/tortas/torta-uno.png',
         stock: 1,
         description:'torta rica y dulce'
     },
@@ -13,7 +13,7 @@ const asyncMock = [
         name:'Torta primavera',
         prince:'90000',
         category:'tortas',
-        img:'./img/tortas/torta-dos.jpg',
+        img:'./img/tortas/torta-dos.png',
         stock: 1,
         description:'torta rica y dulce'
     },
@@ -22,7 +22,7 @@ const asyncMock = [
         name:'Achiras',
         prince:'8000',
         category:'antojos',
-        img:'./img/antojos/achiras.jpg',
+        img:'./img/antojos/achiras-uno.png',
         stock: 1,
         description:'torta rica y dulce'
     },
@@ -31,7 +31,7 @@ const asyncMock = [
         name:'Biscochos',
         prince:'8000',
         category:'antojos',
-        img:'./img/antojos/biscochos.jpg',
+        img:'./img/antojos/biscochos-dos.png',
         stock: 1,
         description:'torta rica y dulce'
     },
@@ -55,6 +55,8 @@ const asyncMock = [
     },
 ]
 
+export default asyncMock
+
 export const getProducts = () => {
     return new Promise ((resolve) =>{
         setTimeout (() =>{
@@ -63,7 +65,7 @@ export const getProducts = () => {
     } )
 }
 
-export const getproducstById = (productId) => {
+export const getproductsById = (productId) => {
     return new Promise ((resolve) =>{
         setTimeout (() =>{
             resolve(productId.find(prod => prod.id === productId))
@@ -78,3 +80,4 @@ export const getProductsByCategory = (categoryId) => {
         }, 500)
     })
 }
+

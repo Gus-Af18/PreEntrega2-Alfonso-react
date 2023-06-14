@@ -12,11 +12,9 @@ body{
     text-align: center;
     
 }
-.cart-div{
-    display: flex;
+h1, h3{
+    background-color: blueviolet;
 }
-#cart-img{
-    width: 1rem; 
-    margin-left: 50%;
-    gap: 1rem;  
+.navbar{
+    background-color: aqua;
 }

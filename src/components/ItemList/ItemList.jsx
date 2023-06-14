@@ -1,4 +1,4 @@
-
+import getProducts from '../../asyncMock'
 import Item from '../Item/Item'
 
 const ItemList = () => {

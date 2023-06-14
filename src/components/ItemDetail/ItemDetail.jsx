@@ -1,8 +1,8 @@
 
 import '../ItemCount/ItemCount'
 
-const ItemCount = ({ id, name, img, category, descriprion, price, stock}) => {
-    retun (
+const ItemDetail = ({ id, name, img, category, descriprion, price, stock}) => {
+    return (
         <article className="CardItem">
             <header className="Header">
                 <h2 className="ItemHeader">
@@ -29,3 +29,5 @@ const ItemCount = ({ id, name, img, category, descriprion, price, stock}) => {
         </article>
     )
 }
+
+export default ItemDetail
