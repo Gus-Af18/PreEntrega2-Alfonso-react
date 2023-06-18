@@ -1,12 +1,13 @@
-import getProducts from '../../asyncMock'
-import Item from '../Item/Item'
+import Item from "../Item/Item";
 
-const ItemList = () => {
-    return (
-        <div className="ListGroup">
-            {getProducts.map(prod => <Item key={prod.id} {...prod} />)}
-        </div>
-    )
-}
+const ItemList = ({ products }) => {
+  return (
+    <div>
+      {products.map((prod) => {
+        return <Item key={prod.id} {...prod} />;
+      })}
+    </div>
+  );
+};
 
-export default ItemList
+export default ItemList;

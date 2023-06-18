@@ -1,29 +1,30 @@
-import '../Item/Item.css'
+import "../Item/Item.css";
+import { Link } from "react-router-dom";
 
-const Item = ({id, name, img, priece, stock}) => {
-    return (
-        <article className="cardItem">
-            <header className="Header">
-                <h2 className="ItemHeader">
-                    {name}
-                </h2>
-            </header>
-            <picture>
-                <img src={img} alt={name} className='ItemImg' />
-            </picture>
-            <section>
-                <p className="Info">
-                    precio: ${priece}
-                </p>
-                <p className="Info">
-                    stock disponible: {stock}
-                </p>
-            </section>
-            <footer className="ItemFooter">
-                <link to={`/item/${id}`} className="option">ver detalle</link>
-            </footer>
-        </article>
-    )
-}
+const Item = ({ id, img, name, category, price }) => {
+  const handleClick = (e) => {
+    e.stopPropagation();
+    console.log("item");
+  };
 
-export default Item
+  return (
+    <div
+      onClick={handleClick}
+      style={{
+        margin: 20,
+        border: "1px solid #000",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <img src={img} alt={name} style={{ width: 100 }} />
+      <h3>{name}</h3>
+      <p>category: {category}</p>
+      <h3>price: ${price}</h3>
+      <Link to={`/item/${id}`}>ver detalle</Link>
+    </div>
+  );
+};
+
+export default Item;

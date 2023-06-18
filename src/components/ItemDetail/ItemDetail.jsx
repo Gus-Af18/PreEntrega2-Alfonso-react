@@ -1,33 +1,70 @@
+import { useState } from "react";
+import "../ItemCount/ItemCount";
 
-import '../ItemCount/ItemCount'
+const ButtonCount = ({ onAdd, stock, initial = 1 }) => {
+  const [count, setCount] = useState(initial);
 
-const ItemDetail = ({ id, name, img, category, descriprion, price, stock}) => {
-    return (
-        <article className="CardItem">
-            <header className="Header">
-                <h2 className="ItemHeader">
-                    {name}
-                </h2>
-            </header>
-            <picture>
-                <img src={img} alt={name} className='ItemImg' />
-            </picture>
-            <section>
-                <p className="Info">
-                    categoria: {category} 
-                </p>
-                <p className="Info">
-                    descripcion: {descriprion}
-                </p>
-                <p className="Info">
-                    precio: ${price}
-                </p>
-            </section>
-            <footer className="ItemFooter">
-                <ItemCount initial = {1} stock={stock} onAdd = {(quantity) => console.log ('cantidad agrgada',)} />
-            </footer>
-        </article>
-    )
-}
+  const increment = () => {
+    if (count < stock) {
+      setCount(count + 1);
+    }
+  };
 
-export default ItemDetail
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={decrement}>-</button>
+      <button onClick={increment}>+</button>
+      <button onClick={() => onAdd(count)}>Agregar al carrito</button>
+    </div>
+  );
+};
+
+const ItemDetail = ({ id, name, category, img, price, stock, description }) => {
+  const [inputType, setInputType] = useState("button");
+  const [quantity, setQuantity] = useState(0);
+
+  const ItemCount = inputType === "input" ? InputCount : ButtonCount;
+
+  const handleOnAdd = (count) => {
+    const objProductToAdd = {
+      id,
+      name,
+      price,
+      count,
+    };
+    console.log(objProductToAdd);
+    console.log("agregue al carrito: ", count);
+
+    setQuantity(count);
+  };
+
+  return (
+    <article>
+      <header>
+        <h2>{name}</h2>
+      </header>
+      <picture>
+        <img src={img} alt={name} style={{ width: 100 }} />
+      </picture>
+      <section>
+        <p>Categoria: {category}</p>
+        <p>Descripción: {description}</p>
+        <p>Precio: {price}</p>
+      </section>
+      <footer>
+        {quantity === 0 ? (
+          <ItemCount onAdd={handleOnAdd} stock={stock} />
+        ) : (
+          <button>Finalizar compra</button>
+        )}
+      </footer>
+    </article>
+  );
+};
+
+export default ItemDetail;
