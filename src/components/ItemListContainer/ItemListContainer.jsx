@@ -3,22 +3,39 @@ import { getProducts, getProductsByCategory } from "../../asyncMock";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 
+
 const ItemListContainer = ({ greeting }) => {
-  const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
 
-  const { categoryId } = useParams([]);
+    const [setTitle] = useState('Primer titulo')
 
-  useEffect(() => {
-    const asyncFunc = categoryId ? getProductsByCategory : getProducts;
+    const { categoryId } = useParams()
 
-    asyncFunc(categoryId)
-      .then((Response) => {
-        setProducts(Response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [categoryId]);
+    useEffect(() => {
+        const getFunction = categoryId ? getProductsByCategory : getProducts
+        setLoading(true)
+        getFunction(categoryId)
+            .then(response => {
+                setProducts(response)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+            .finally(() => {
+                setLoading(false) 
+            })
+    }, [categoryId])
+    
+    useEffect(() => {
+        setTimeout(() => {
+            setTitle('segundo titulo')
+        }, 2000)
+    }, [])
+
+    if(loading) {
+        return <h1>Loading...</h1>
+    }
 
   return (
     <div>

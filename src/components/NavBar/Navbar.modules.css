@@ -1,20 +1,21 @@
 /*reset*/
-*{
+/**{
     box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
 }
 /*estilos generales*/
-body{
-    margin: 0;
-    padding: 0;
-    background-color: tomato;
+/*body{
+
+    background-color: azure ;
     font-family:'Courier New', Courier, monospace;
     font-weight: bold;
     text-align: center;
     
 }
-h1, h3{
-    background-color: blueviolet;
+h1, h3, p{
+    background-color: teal;
 }
-.navbar{
+categories{
     background-color: aqua;
 }

@@ -1,21 +1,24 @@
-import "../ItemCount/ItemCount.css";
 import { useState } from "react";
 
-const ItemCount = ({ onAdd, stock, initial = 1 }) => {
-  const [count, setCount] = useState(initial);
+const ItemCount = ({ stock, onAdd }) => {
+  const [count, setCount] = useState(1)
+  
+  const decrement = () => {
+      if(count > 1) setCount(prev => prev - 1)
+  }
 
-  const handleChange = (e) => {
-    if (e.target.value <= stock) {
-      setCount(e.target.value);
-    }
-  };
+  const increment = () => {
+      if(count < stock) setCount(prev => prev + 1)
+  }
 
   return (
-    <div>
-      <input type="number" onChange={handleChange} value={count} />
-      <button onClick={() => onAdd(count)}>Agregar al carrito</button>
-    </div>
-  );
-};
+      <div>
+          <h3>{count}</h3>
+          <button onClick={decrement}>-</button>
+          <button onClick={() => onAdd(count)}>agregar al cartito </button>
+          <button onClick={increment}>+</button>
+      </div>
+  )
+}
 
-export default ItemCount;
+export default ItemCount
