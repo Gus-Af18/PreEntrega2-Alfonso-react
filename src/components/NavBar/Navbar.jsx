@@ -3,12 +3,12 @@ import CartWidget from "../CartWidget/CartWidget"
 
 const Navbar = () => {
     return (
-        <div>
-            <h1>Tortas Artesanales</h1>
-            <div>
-                <Link to={'/category/tortas'}>Tortas</Link>
-                <Link to={'/category/antojos'}>Antojos</Link>
-                <Link to={'/category/gustos'}>Gustos</Link>
+        <div id="menuNavbar">
+            <h1 className="tituloPrincipal">Tortas Artesanales</h1>
+            <div id="menuBotones">
+                <Link className="menu" to={'/category/tortas'}>Tortas</Link>
+                <Link className="menu" to={'/category/antojos'}>Antojos</Link>
+                <Link className="menu" to={'/category/gustos'}>Gustos</Link>
             </div>
             <CartWidget />
         </div>

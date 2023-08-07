@@ -35,29 +35,21 @@ const ItemListContainer = ({ greeting }) => {
         setLoading(false);
       });
 
-    // const getFunction = categoryId ? getProductsByCategory : getProducts
-    // setLoading(true)
-    // getFunction(categoryId)
-    //     .then(response => {
-    //         setProducts(response)
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     })
-    //     .finally(() => {
-    //         setLoading(false)
-    //     })
-  }, [categoryId]);
+    }, [categoryId]);
 
   if (loading) {
     return <h1>Loading...</h1>;
   }
 
   return (
-    <div>
+    <div id="contenido">
       <h1>{greeting}</h1>
-      <button onClick={() => setDisplayGrid(true)}>grilla</button>
-      <button onClick={() => setDisplayGrid(false)}>lista</button>
+      <button className="grilla" onClick={() => setDisplayGrid(true)}>
+        grilla
+      </button>
+      <button className="grilla" onClick={() => setDisplayGrid(false)}>
+        lista
+      </button>
       {displayGrid ? (
         <ItemGrid products={products} />
       ) : (

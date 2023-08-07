@@ -16,11 +16,47 @@ h1, h2{
   font-style: italic;
   text-align: center;
 }
-a{
-  text-decoration: none;
+#menuNavbar{
+  display: grid;
+  width: 100%;
+  grid-template-areas:
+  "titulo titulo"
+  "nav  cart";
+  grid-template-rows: 1fr 25px;
+  grid-template-columns: 10fr 1fr;
+}
+
+#menuNavbar > .tituloPrincipal{
+  grid-area: titulo;
+}
+
+#menuNavbar > #menuBotones {
+  grid-area: nav;
+}
+
+#menuNavbar > .cart {
+  grid-area: cart;
+}
+
+#menuBotones{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+a{
+  text-decoration: none;
+}
+
+#contenido{
+  background-color: aquamarine;
+  text-align: center;
+}
+
+.prodDetail{
+  text-align: center;
+  align-items: center;
+  align-content: center;
 }
